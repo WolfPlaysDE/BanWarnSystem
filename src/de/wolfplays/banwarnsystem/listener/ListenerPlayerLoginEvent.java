@@ -12,7 +12,7 @@ import de.wolfplays.banwarnsystem.util.MySQLBanManager;
  * Created by WolfPlaysDE
  * On 30.03.2015 at 06:33:26
  */
-public class Listener_PlayerLoginEvent implements Listener {
+public class ListenerPlayerLoginEvent implements Listener {
 
 	@EventHandler
 	public void onPlayerLogin(PlayerLoginEvent event) {

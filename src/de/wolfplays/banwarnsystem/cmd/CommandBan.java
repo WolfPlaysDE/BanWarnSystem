@@ -17,7 +17,7 @@ import de.wolfplays.banwarnsystem.util.UUIDFetcher;
  * Created by WolfPlaysDE
  * On 30.03.2015 at 04:49:34
  */
-public class Cmd_ban implements CommandExecutor {
+public class CommandBan implements CommandExecutor {
 
 	private UUID getUUID(String playername) {
 		try {

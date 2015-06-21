@@ -1,14 +1,13 @@
 package de.wolfplays.banwarnsystem.main;
 
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.wolfplays.banwarnsystem.cmd.Cmd_ban;
-import de.wolfplays.banwarnsystem.cmd.Cmd_banhelp;
-import de.wolfplays.banwarnsystem.cmd.Cmd_warn;
-import de.wolfplays.banwarnsystem.cmd.Cmd_warnhelp;
-import de.wolfplays.banwarnsystem.listener.Listener_PlayerJoinEvent;
-import de.wolfplays.banwarnsystem.listener.Listener_PlayerLoginEvent;
+import de.wolfplays.banwarnsystem.cmd.CommandBan;
+import de.wolfplays.banwarnsystem.cmd.CommandBanHelp;
+import de.wolfplays.banwarnsystem.cmd.CommandWarn;
+import de.wolfplays.banwarnsystem.cmd.CommandWarnHelp;
+import de.wolfplays.banwarnsystem.listener.ListenerPlayerJoinEvent;
+import de.wolfplays.banwarnsystem.listener.ListenerPlayerLoginEvent;
 import de.wolfplays.banwarnsystem.util.FileManager;
 import de.wolfplays.banwarnsystem.util.MySQL;
 import de.wolfplays.banwarnsystem.util.PluginLogger;
@@ -38,18 +37,18 @@ public class BanWarnSystem extends JavaPlugin {
 		
         MySQL.connect();
 
-        register.registerEvents(Listener_PlayerLoginEvent.class, Listener_PlayerJoinEvent.class);
+        register.registerEvents(ListenerPlayerLoginEvent.class, ListenerPlayerJoinEvent.class);
         
-        register.registerCommand("permban", "", new Cmd_ban());
-        register.registerCommand("tempban", "", new Cmd_ban());
-        register.registerCommand("unban", "", new Cmd_ban());
-        register.registerCommand("checkban", "", new Cmd_ban());
-        register.registerCommand("banhelp", "", new Cmd_banhelp());
+        register.registerCommand("permban", "", new CommandBan());
+        register.registerCommand("tempban", "", new CommandBan());
+        register.registerCommand("unban", "", new CommandBan());
+        register.registerCommand("checkban", "", new CommandBan());
+        register.registerCommand("banhelp", "", new CommandBanHelp());
         
-        register.registerCommand("addwarn", "", new Cmd_warn());
-        register.registerCommand("removewarn", "", new Cmd_warn());
-        register.registerCommand("checkwarn", "", new Cmd_warn());
-        register.registerCommand("warnhelp", "", new Cmd_warnhelp());
+        register.registerCommand("addwarn", "", new CommandWarn());
+        register.registerCommand("removewarn", "", new CommandWarn());
+        register.registerCommand("checkwarn", "", new CommandWarn());
+        register.registerCommand("warnhelp", "", new CommandWarnHelp());
 
         this.getServer().getConsoleSender().sendMessage(prefix + "Plugin coded by WolfPlaysDE!");
         this.getServer().getConsoleSender().sendMessage(prefix + "Das Plugin ist Copyright geschuetzt weitergeben oder verkaufen ist verboten!");
@@ -59,8 +58,7 @@ public class BanWarnSystem extends JavaPlugin {
 
         this.getServer().getConsoleSender().sendMessage(prefix + "MySQL Verbindungsaufgebau: " + (MySQL.con == null ? "§4ist fehlgeschlagen!" : "§2war erfolgreich!"));
         if (MySQL.con == null) {
-        	Plugin plugin = getServer().getPluginManager().getPlugin("MySQLBanSystem");
-            getServer().getPluginManager().disablePlugin(plugin);
+        	onDisable();
             this.getServer().getConsoleSender().sendMessage(prefix + " §4§lDAS PLUGIN WURDE DEAKTIVIRT, WEIL DIE MYSQL VERBINDUNG FEHLGESCHLAGEN IST!");
         }
     }

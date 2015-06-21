@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
  * Created by WolfPlaysDE
  * On 30.03.2015 at 04:49:34
  */
-public class Cmd_warnhelp implements CommandExecutor {
+public class CommandWarnHelp implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {

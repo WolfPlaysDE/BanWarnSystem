@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
  * Created by WolfPlaysDE
  * On 03.04.2015 at 03:11:51
  */
-public class Cmd_banhelp implements CommandExecutor {
+public class CommandBanHelp implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {
