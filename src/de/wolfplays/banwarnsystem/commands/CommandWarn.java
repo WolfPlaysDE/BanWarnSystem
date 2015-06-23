@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import de.wolfplays.banwarnsystem.BanWarnSystem;
 import de.wolfplays.banwarnsystem.mysql.MySQLBanManager;
 import de.wolfplays.banwarnsystem.mysql.MySQLWarnManager;
-import de.wolfplays.banwarnsystem.util.PluginLogger;
+import de.wolfplays.banwarnsystem.util.PluginLogger.LogSettings;
 import de.wolfplays.banwarnsystem.util.UUIDFetcher;
 
 /**
@@ -59,11 +59,11 @@ public class CommandWarn implements CommandExecutor {
 				BanWarnSystem.getInstance().getServer().broadcastMessage("§7Warns: §e" + MySQLWarnManager.getWarns(getUUID(playername).toString()) + "/" + MySQLWarnManager.maxwarns);
 				BanWarnSystem.getInstance().getServer().broadcastMessage("§7Grund: §e" + reason);
 				BanWarnSystem.getInstance().getServer().broadcastMessage("§7---------[§6§lWarn-Info§r§7]---------");
-				PluginLogger.log(cs.getName() + " hat " + playername + " einen Warn gegeben.");
+				BanWarnSystem.getInstance().logger.log(LogSettings.INFO, cs.getName() + " hat " + playername + " einen Warn gegeben.");
 				if(MySQLWarnManager.getWarns(getUUID(playername).toString()) == MySQLWarnManager.maxwarns) {
 					MySQLBanManager.ban(args[0], getUUID(playername).toString(), "Zu Viele Warns!", -1);
 					MySQLWarnManager.deletePlayer(getUUID(playername).toString());
-					PluginLogger.log(playername + " wurde wegen maximalen Warns permanet gebannnt");
+					BanWarnSystem.getInstance().logger.log(LogSettings.INFO, playername + " wurde wegen maximalen Warns permanet gebannnt");
 				}
 				return true;
 			}
@@ -86,7 +86,7 @@ public class CommandWarn implements CommandExecutor {
 					}
 					MySQLWarnManager.deleteWarns(getUUID(playername).toString(), 1);
 					cs.sendMessage(prefix + "§7Du hast §e" + playername + " §71 Warn entfernt!");
-					PluginLogger.log(cs.getName() + " hat " + playername + " einen Warn entfernt.");
+					BanWarnSystem.getInstance().logger.log(LogSettings.INFO, cs.getName() + " hat " + playername + " einen Warn entfernt.");
 					return true;
 				}
 				cs.sendMessage(prefix + "§c/removewarn <Spieler>");

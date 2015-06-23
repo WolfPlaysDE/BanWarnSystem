@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import de.wolfplays.banwarnsystem.BanWarnSystem;
 import de.wolfplays.banwarnsystem.mysql.MySQLBanManager;
 import de.wolfplays.banwarnsystem.util.BanUnit;
-import de.wolfplays.banwarnsystem.util.PluginLogger;
+import de.wolfplays.banwarnsystem.util.PluginLogger.LogSettings;
 import de.wolfplays.banwarnsystem.util.UUIDFetcher;
 
 /**
@@ -50,8 +50,7 @@ public class CommandBan implements CommandExecutor {
 				}
 				MySQLBanManager.ban(args[0], getUUID(playername).toString(), reason, -1);
 				cs.sendMessage(prefix + "§7Du hast §e" + playername + " §4PERMANET §7von dem Server gebant!");
-				PluginLogger.log(cs.getName() + " hat " + playername + " permanet von dem Server gebannt! Grund:\n"
-						+ reason);
+				BanWarnSystem.getInstance().logger.log(LogSettings.INFO, cs.getName() + " hat " + playername + " permanet von dem Server gebannt! Grund:\n" + reason);
 				return true;
 				}
 			cs.sendMessage(prefix + "§c/permban <Spieler> <Grund>");
@@ -93,8 +92,7 @@ public class CommandBan implements CommandExecutor {
 					long seconds = value * unit.getToSecond();
 					MySQLBanManager.ban(playername, getUUID(playername).toString(), reason, seconds);
 					cs.sendMessage("§7Du hast §e" + playername + " §7f§r §c" + value + unit.getName() + " §7vom Server gebannt!");
-					PluginLogger.log(cs.getName() + " hat " + playername + " temporär von dem Server gebannt! Grund:\n"
-							+ reason);
+					BanWarnSystem.getInstance().logger.log(LogSettings.INFO, cs.getName() + " hat " + playername + " temporär von dem Server gebannt! Grund:\n" + reason);
 					return true;
 				}
 				cs.sendMessage(prefix + "§cDiese <Einheit> existiert nicht!(sec/min/hour/day/week)");
@@ -119,7 +117,7 @@ public class CommandBan implements CommandExecutor {
 				}
 				MySQLBanManager.unban(getUUID(playername).toString());
 				cs.sendMessage(prefix + "§7Du hast §e" + playername + " §7entbannt!");
-				PluginLogger.log(cs.getName() + " hat " + playername + " entbannt!");
+				BanWarnSystem.getInstance().logger.log(LogSettings.INFO, cs.getName() + " hat " + playername + " entbannt!");
 				return true;
 			}
 			cs.sendMessage(prefix + "§c/unban <Spieler>");

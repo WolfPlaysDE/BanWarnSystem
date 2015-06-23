@@ -11,6 +11,7 @@ import de.wolfplays.banwarnsystem.listener.ListenerPlayerLoginEvent;
 import de.wolfplays.banwarnsystem.mysql.MySQL;
 import de.wolfplays.banwarnsystem.util.FileManager;
 import de.wolfplays.banwarnsystem.util.PluginLogger;
+import de.wolfplays.banwarnsystem.util.PluginLogger.LogSettings;
 import de.wolfplays.banwarnsystem.util.RegisterManager;
 
 /**
@@ -21,19 +22,21 @@ public class BanWarnSystem extends JavaPlugin {
 
 	public String prefix;
 	
-	public static BanWarnSystem Instance;
+	private static BanWarnSystem instance;
 	
 	public RegisterManager<BanWarnSystem> register = new RegisterManager<BanWarnSystem>(this);
 	
+	public PluginLogger logger;
+	
 	@Override
 	public void onLoad() {
-		BanWarnSystem.Instance = this;
+		instance = this;
+		logger = new PluginLogger(getDataFolder(), "Log.txt");
 	}
 	
 	@Override
 	public void onEnable() {
 		FileManager.setupConfigs();
-        PluginLogger.loadLog();
 		
         MySQL.connect();
 
@@ -58,18 +61,21 @@ public class BanWarnSystem extends JavaPlugin {
 
         this.getServer().getConsoleSender().sendMessage(prefix + "MySQL Verbindungsaufgebau: " + (MySQL.con == null ? "§4ist fehlgeschlagen!" : "§2war erfolgreich!"));
         if (MySQL.con == null) {
+        	this.getServer().getConsoleSender().sendMessage(prefix + " §4§lDAS PLUGIN WURDE DEAKTIVIRT, WEIL DIE MYSQL VERBINDUNG FEHLGESCHLAGEN IST!");
+        	logger.log(LogSettings.WARN, "Die verbindung zu der MySQL ist fehlgeschlagen!");
         	onDisable();
-            this.getServer().getConsoleSender().sendMessage(prefix + " §4§lDAS PLUGIN WURDE DEAKTIVIRT, WEIL DIE MYSQL VERBINDUNG FEHLGESCHLAGEN IST!");
         }
+        logger.log(LogSettings.INFO, "Das Plugin wurde Erfolgreich gestartet!");
     }
 		
 	@Override
 	public void onDisable() {
 		MySQL.diconnect();
+		logger.log(LogSettings.INFO, "Das Plugin wurde Erfolgreich gestopt!");
 	}
 
 	public static BanWarnSystem getInstance() {
-		return Instance;
+		return instance;
 	}
 
 }
