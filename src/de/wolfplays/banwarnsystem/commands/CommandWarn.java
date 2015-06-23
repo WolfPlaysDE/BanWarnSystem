@@ -1,4 +1,4 @@
-package de.wolfplays.banwarnsystem.cmd;
+package de.wolfplays.banwarnsystem.commands;
 
 import java.util.UUID;
 
@@ -8,7 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import de.wolfplays.banwarnsystem.main.BanWarnSystem;
+import de.wolfplays.banwarnsystem.BanWarnSystem;
 import de.wolfplays.banwarnsystem.util.MySQLBanManager;
 import de.wolfplays.banwarnsystem.util.MySQLWarnManager;
 import de.wolfplays.banwarnsystem.util.PluginLogger;

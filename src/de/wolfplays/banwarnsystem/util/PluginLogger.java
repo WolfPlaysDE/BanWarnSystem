@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
-import de.wolfplays.banwarnsystem.main.BanWarnSystem;
+import de.wolfplays.banwarnsystem.BanWarnSystem;
 
 public class PluginLogger {
 

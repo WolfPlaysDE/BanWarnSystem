@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 
 import org.bukkit.Bukkit;
 
-import de.wolfplays.banwarnsystem.main.BanWarnSystem;
+import de.wolfplays.banwarnsystem.BanWarnSystem;
 
 /**
  * Created by WolfPlaysDE

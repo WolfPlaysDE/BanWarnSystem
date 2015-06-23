@@ -1,11 +1,11 @@
-package de.wolfplays.banwarnsystem.main;
+package de.wolfplays.banwarnsystem;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.wolfplays.banwarnsystem.cmd.CommandBan;
-import de.wolfplays.banwarnsystem.cmd.CommandBanHelp;
-import de.wolfplays.banwarnsystem.cmd.CommandWarn;
-import de.wolfplays.banwarnsystem.cmd.CommandWarnHelp;
+import de.wolfplays.banwarnsystem.commands.CommandBan;
+import de.wolfplays.banwarnsystem.commands.CommandBanHelp;
+import de.wolfplays.banwarnsystem.commands.CommandWarn;
+import de.wolfplays.banwarnsystem.commands.CommandWarnHelp;
 import de.wolfplays.banwarnsystem.listener.ListenerPlayerJoinEvent;
 import de.wolfplays.banwarnsystem.listener.ListenerPlayerLoginEvent;
 import de.wolfplays.banwarnsystem.util.FileManager;

@@ -7,7 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import de.wolfplays.banwarnsystem.main.BanWarnSystem;
+import de.wolfplays.banwarnsystem.BanWarnSystem;
 
 /**
  * Created by WolfPlaysDE

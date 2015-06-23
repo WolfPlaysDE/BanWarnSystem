@@ -1,4 +1,4 @@
-package de.wolfplays.banwarnsystem.cmd;
+package de.wolfplays.banwarnsystem.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
