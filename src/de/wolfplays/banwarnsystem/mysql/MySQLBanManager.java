@@ -1,4 +1,4 @@
-package de.wolfplays.banwarnsystem.util;
+package de.wolfplays.banwarnsystem.mysql;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

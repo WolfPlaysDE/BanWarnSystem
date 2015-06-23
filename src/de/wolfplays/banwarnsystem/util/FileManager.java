@@ -8,6 +8,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import de.wolfplays.banwarnsystem.BanWarnSystem;
+import de.wolfplays.banwarnsystem.mysql.MySQL;
+import de.wolfplays.banwarnsystem.mysql.MySQLWarnManager;
 
 /**
  * Created by WolfPlaysDE

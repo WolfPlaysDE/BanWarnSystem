@@ -8,8 +8,8 @@ import de.wolfplays.banwarnsystem.commands.CommandWarn;
 import de.wolfplays.banwarnsystem.commands.CommandWarnHelp;
 import de.wolfplays.banwarnsystem.listener.ListenerPlayerJoinEvent;
 import de.wolfplays.banwarnsystem.listener.ListenerPlayerLoginEvent;
+import de.wolfplays.banwarnsystem.mysql.MySQL;
 import de.wolfplays.banwarnsystem.util.FileManager;
-import de.wolfplays.banwarnsystem.util.MySQL;
 import de.wolfplays.banwarnsystem.util.PluginLogger;
 import de.wolfplays.banwarnsystem.util.RegisterManager;
 

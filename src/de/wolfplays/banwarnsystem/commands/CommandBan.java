@@ -8,8 +8,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import de.wolfplays.banwarnsystem.BanWarnSystem;
+import de.wolfplays.banwarnsystem.mysql.MySQLBanManager;
 import de.wolfplays.banwarnsystem.util.BanUnit;
-import de.wolfplays.banwarnsystem.util.MySQLBanManager;
 import de.wolfplays.banwarnsystem.util.PluginLogger;
 import de.wolfplays.banwarnsystem.util.UUIDFetcher;
 

@@ -6,7 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
 
-import de.wolfplays.banwarnsystem.util.MySQLBanManager;
+import de.wolfplays.banwarnsystem.mysql.MySQLBanManager;
 
 /**
  * Created by WolfPlaysDE

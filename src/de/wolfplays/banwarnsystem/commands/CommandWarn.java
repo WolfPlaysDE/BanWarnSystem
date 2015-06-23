@@ -9,8 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import de.wolfplays.banwarnsystem.BanWarnSystem;
-import de.wolfplays.banwarnsystem.util.MySQLBanManager;
-import de.wolfplays.banwarnsystem.util.MySQLWarnManager;
+import de.wolfplays.banwarnsystem.mysql.MySQLBanManager;
+import de.wolfplays.banwarnsystem.mysql.MySQLWarnManager;
 import de.wolfplays.banwarnsystem.util.PluginLogger;
 import de.wolfplays.banwarnsystem.util.UUIDFetcher;
 
