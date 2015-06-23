@@ -6,35 +6,62 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
-import de.wolfplays.banwarnsystem.BanWarnSystem;
-
 public class PluginLogger {
-
+	
 	private static PrintWriter pWriter;
-	public static File logfile = new File(BanWarnSystem.getInstance().getDataFolder(), "log.txt");
+	public static File logfile;
 	
-	static {
-		try {
-			pWriter = new PrintWriter(new FileWriter(logfile, true), true);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static void loadLog() {
+	public PluginLogger(File file, String logFileName) {
+		logfile = new File(file, logFileName);
 		if(!logfile.exists()) {
-				try {
-					logfile.createNewFile();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+			try {
+				pWriter = new PrintWriter(new FileWriter(logfile, true), true);
+				logfile.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
-	public static void log(String toLog) {
+	public void log(LogSettings settings, String toLog) {
 		Date date = new Date();
-		pWriter.println("[ " + date.toString() + " ] " + toLog); 
+		if(settings.equals(LogSettings.NOTHING)) {
+			pWriter.println("[ " + date.toString() + " ]" + toLog);
+		} else {
+			pWriter.println("[ " + date.toString() + " " + settings.getName() + " ]" + toLog);
+		}
         pWriter.flush();
+	}
+	
+	public void logCustom(String settings, String toLog, boolean withDate) {
+		Date date = new Date();
+		if(withDate) {
+			pWriter.println("[ " + date.toString() + " " + settings + " ]" + toLog); 
+		} else {
+			if(settings.equals("")) {
+				pWriter.println(toLog); 
+			} else {
+				pWriter.println("[ " + settings + " ]" + toLog); 
+			}
+		}
+        pWriter.flush();
+	}
+
+	public static enum LogSettings {
+		NOTHING(""),
+		INFO("INFO"),
+		WARN("WARN"),
+		ERROR("ERROR");
+
+		private String name;
+
+		private LogSettings(String name) {
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
 	}
 	
 }
