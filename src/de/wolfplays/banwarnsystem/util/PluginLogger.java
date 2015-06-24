@@ -36,7 +36,11 @@ public class PluginLogger {
 	public void logCustom(String settings, String toLog, boolean withDate) {
 		Date date = new Date();
 		if(withDate) {
-			pWriter.println("[ " + date.toString() + " " + settings + " ]" + toLog); 
+			if(settings.equals("")) {
+				pWriter.println("[ " + date.toString() + " ]" + toLog); 
+			} else {
+				pWriter.println("[ " + date.toString() + " " + settings + " ]" + toLog); 
+			} 
 		} else {
 			if(settings.equals("")) {
 				pWriter.println(toLog); 
