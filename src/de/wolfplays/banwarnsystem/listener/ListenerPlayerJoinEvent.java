@@ -8,17 +8,16 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import de.wolfplays.banwarnsystem.mysql.MySQLBanManager;
 
 /**
- * Created by WolfPlaysDE
- * On 30.03.2015 at 06:32:58
+ * Created by WolfPlaysDE On 30.03.2015 at 06:32:58
  */
 public class ListenerPlayerJoinEvent implements Listener {
 
-	@EventHandler
-	public void onPlayerJoin(PlayerJoinEvent event) {
-		Player p = event.getPlayer();
-		if(MySQLBanManager.isBanned(p.getUniqueId().toString())) {
-			MySQLBanManager.unban(p.getUniqueId().toString());
-		}
-	}
-	
+  @EventHandler
+  public void onPlayerJoin(PlayerJoinEvent event) {
+    Player p = event.getPlayer();
+    if (MySQLBanManager.isBanned(p.getUniqueId().toString())) {
+      MySQLBanManager.unban(p.getUniqueId().toString());
+    }
+  }
+
 }
